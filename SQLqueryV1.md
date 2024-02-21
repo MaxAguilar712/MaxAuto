@@ -13,6 +13,7 @@ DROP TABLE IF EXISTS [Part];
 
 CREATE TABLE [UserType] (
   [Id] integer PRIMARY KEY IDENTITY,
+
   [Name] nvarchar(20) NOT NULL
 )
 
@@ -66,12 +67,16 @@ VALUES
   (8, 19500, 1989, 'Soarer GT Twin Turbo', 'MT', 'Toyota', 110000, 'https://i.imgur.com/dNbpoW9.jpeg', 22000),
   (9, 9500, 1991, 'Silvia S13', 'MT', 'Nissan', 190000, 'https://i.imgur.com/W9OxbF9.jpeg', 11500),
   (10, 7000, 1987, '200SX S12', 'MT', 'Nissan', 140000, 'https://i.imgur.com/9X9qeYt.jpeg', 8800);
-SET IDENTITY_INSERT [UserProfile] OFF
+
+
+SET IDENTITY_INSERT [User] ON
 INSERT INTO [User]
-  ([Id], [Name], [Email], [Money])
+  ([Id], [Name], [Email], [UserTypeId], [Money])
 VALUES 
-  (1, 'Admin', 'Admin@email.com', 999999);
-SET IDENTITY_INSERT [Part] ON
+  (1, 'Admin', 'Admin@email.com', 1, 999999);
+
+
+SET IDENTITY_INSERT [Part] OFF
 INSERT INTO [Part]
   ([Id], [Name], [Category], [Price])
 VALUES
@@ -81,6 +86,7 @@ VALUES
   (4, 'Serpentine Belt', 'Belts', 25),
   (5, 'Fan Belt', 'Belts', 15),
   (6, 'Timing Belt', 'Belts', 25);
-SET IDENTITY_INSERT [Post] OFF
+
+
 
 ```
