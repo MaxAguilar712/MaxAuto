@@ -11,6 +11,23 @@ DROP TABLE IF EXISTS [Car];
 DROP TABLE IF EXISTS [User];
 DROP TABLE IF EXISTS [Part];
 
+CREATE TABLE [UserType] (
+  [Id] integer PRIMARY KEY IDENTITY,
+  [Name] nvarchar(20) NOT NULL
+)
+
+CREATE TABLE [User] (
+  [Id] integer PRIMARY KEY identity NOT NULL,
+  [Name] nvarchar(255) NOT NULL,
+  [Email] nvarchar(255) NOT NULL,
+  [UserTypeId] integer NOT NULL,
+  [Money] integer,
+
+ CONSTRAINT [FK_User_UserType] FOREIGN KEY ([UserTypeId]) REFERENCES [UserType] ([Id]),
+)
+
+GO
+
 CREATE TABLE [Car] (
   [Id] integer PRIMARY KEY identity NOT NULL,
   [Price] integer NOT NULL,
@@ -24,14 +41,7 @@ CREATE TABLE [Car] (
 )
 GO
 
-CREATE TABLE [User] (
-  [Id] integer PRIMARY KEY identity NOT NULL,
-  [Name] nvarchar(255) NOT NULL,
-  [Email] nvarchar(255) NOT NULL,
 
-  [Money] integer,
-)
-GO
 
 CREATE TABLE [Part] (
   [Id] integer PRIMARY KEY identity NOT NULL,
