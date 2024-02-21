@@ -46,7 +46,16 @@ SET IDENTITY_INSERT [Car] ON
 INSERT INTO [Car]
   ([Id], [Price], [Year], [Name], [Transmission], [Manufacturer], [Mileage], [ImageUrl], [Worth])
 VALUES 
-  (1, 1500, 1990, 'Civic SI Sedan', 'MT', 'Honda', 255000, 'https://i.imgur.com/nGWK571.jpg', 2200);
+  (1, 1500, 1990, 'Civic SI Sedan', 'MT', 'Honda', 255000, 'https://i.imgur.com/nGWK571.jpg', 2200),
+  (2, 3500, 1992, 'Acty', 'MT', 'Honda', 125000, 'https://i.imgur.com/1V8WNwU.jpg', 4000),
+  (3, 8000, 1986, 'Mustang GT', 'MT', 'Ford', 198000, 'https://i.imgur.com/2SWEqpa.jpeg', 9500),
+  (4, 1800, 1998, 'Escort LX', 'AT','Ford', 260000, 'https://i.imgur.com/FljplyL.jpeg', 1200),
+  (5, 12000, 1986, 'CRX SI', 'MT', 'Honda', 90000, 'https://i.imgur.com/I3UeV0u.jpeg', 17500),
+  (6, 3500, 1988, 'Mark II', 'MT', 'Toyota', 130000, 'https://i.imgur.com/8pWmZTs.jpeg', 3200),
+  (7, 24500, 1996, 'Chaser Tourer V', 'MT', 'Toyota', 50000, 'https://i.imgur.com/xyKVSyG.jpeg', 34500),
+  (8, 19500, 1989, 'Soarer GT Twin Turbo', 'MT', 'Toyota', 110000, 'https://i.imgur.com/dNbpoW9.jpeg', 22000),
+  (9, 9500, 1991, 'Silvia S13', 'MT', 'Nissan', 190000, 'https://i.imgur.com/W9OxbF9.jpeg', 11500),
+  (10, 7000, 1987, '200SX S12', 'MT', 'Nissan', 140000, 'https://i.imgur.com/9X9qeYt.jpeg', 8800);
 SET IDENTITY_INSERT [UserProfile] OFF
 INSERT INTO [User]
   ([Id], [Name], [Email], [Money])
