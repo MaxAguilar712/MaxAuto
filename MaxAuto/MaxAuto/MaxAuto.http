@@ -1,0 +1,6 @@
+@MaxAuto_HostAddress = http://localhost:5232
+
+GET {{MaxAuto_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
