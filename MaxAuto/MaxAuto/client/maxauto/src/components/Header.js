@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink as RRNavLink } from "react-router-dom";
-import { logout } from "../Managers/UserProfileManager";
+import { logout } from "../Managers/UserManager";
 import {
 	Collapse,
 	Navbar,
@@ -15,13 +15,13 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const toggle = () => setIsOpen(!isOpen);
 
-	const user = JSON.parse(localStorage.getItem("userProfile"));
+	const user = JSON.parse(localStorage.getItem("user"));
 
 	return (
 		<div>
-			<Navbar color='light' light expand='md'>
+			<Navbar color='dark' dark expand='md'>
 				<NavbarBrand tag={RRNavLink} to='/'>
-					Tabloid
+					MAX AUTO
 				</NavbarBrand>
 				<NavbarToggler onClick={toggle} />
 				<Collapse isOpen={isOpen} navbar>
@@ -58,8 +58,8 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 								</NavItem>
 								{user && user.userTypeId == 1 && (
 									<NavItem>
-										<NavLink tag={RRNavLink} to='/userprofiles'>
-											User Profiles
+										<NavLink tag={RRNavLink} to='/users'>
+											User s
 										</NavLink>
 									</NavItem>
 								)}

@@ -1,12 +1,14 @@
-﻿namespace MaxAuto.Repositories
+﻿using MaxAuto.Models;
+
+namespace MaxAuto.Repositories
 {
     public interface IUserRepository
     {
-        void Add(UserProfile userProfile);
-        List<UserProfile> GetAllProfiles();
-        UserProfile GetByEmail(string email);
-        UserProfile GetById(int Id);
-        List<UserProfile> GetByStatusId(int id);
-        void UpdateStatusId(UserProfile user);
+        void Add(User user);
+        List<User> GetAllProfiles();
+        User GetByEmail(string email);
+        User GetById(int Id);
+        //List<UserProfile> GetByStatusId(int id);
+        //void UpdateStatusId(UserProfile user);
     }
 }

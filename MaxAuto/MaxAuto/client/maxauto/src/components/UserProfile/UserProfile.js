@@ -1,26 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { getUserProfileById } from "../../Managers/UserProfileManager";
+import { getUserById } from "../../Managers/UserManager";
 import { useParams } from "react-router-dom";
 
-export default function UserProfile() {
-  const [userProfiles, setUserProfiles] = useState([]);
+export default function User() {
+  const [users, setUsers] = useState([]);
 
   const { id } = useParams();
 
-  const dateFormat = new Date(userProfiles.createDateTime).toLocaleDateString('en-US');
+  const dateFormat = new Date(user.createDateTime).toLocaleDateString('en-US');
 
   useEffect(() => {
-    getUserProfileById(id).then(setUserProfiles);
+    getUserById(id).then(setUsers);
   }, []);
 
   return (
     <div>
-      <div>{userProfiles.fullName}</div>
-      <img src={userProfiles.imageLocation}/>
-      <div>{userProfiles.displayName}</div>
-      <div>{userProfiles.email}</div>
-      <div>{dateFormat}</div>
-      <div>{userProfiles?.userType?.name}</div>
+      <div>{user.Name}</div>
+      <div>{user.email}</div>
+      <div>{user?.userType?.name}</div>
+      <div>{user.money}</div>
     </div>
   );
 }
