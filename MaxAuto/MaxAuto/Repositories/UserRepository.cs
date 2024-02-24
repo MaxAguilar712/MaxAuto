@@ -3,13 +3,14 @@
 using MaxAuto.Utils;
 
 
+
 namespace MaxAuto.Repositories
 {
-    public class UserRepository : BaseRepository, IUserRepository, IUserRepository
+    public class UserRepository : BaseRepository, IUserRepository
     {
         public UserRepository(IConfiguration configuration) : base(configuration) { }
 
-        public List<UserProfile> GetAllProfiles()
+        public List<User> GetAllProfiles()
         {
             using (var conn = Connection)
             {
@@ -17,45 +18,33 @@ namespace MaxAuto.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                         SELECT up.Id, up.FirstName, up.LastName, up.DisplayName, 
-                               up.Email, up.CreateDateTime, up.ImageLocation, up.UserTypeId, up.UserStatusId, up.Password,
-                               ut.Name AS UserTypeName, us.Name AS UserStatusName
-                          FROM UserProfile up
-                               LEFT JOIN UserType ut on up.UserTypeId = ut.Id
-                               LEFT JOIN UserStatus us on up.UserStatusId = us.Id
-                         ORDER BY up.DisplayName";
+                         SELECT u.Id, u.Name, u.Email, u.UserTypeId,
+                               ut.Name AS UserTypeName 
+                          FROM [User] u
+                               LEFT JOIN UserType ut on u.UserTypeId = ut.Id
+                         ORDER BY u.Name";
 
                     // DbUtils.AddParameter(cmd, "@email", email);
 
-                    // UserProfile userProfile = null;
+                    // User user = null;
 
                     var reader = cmd.ExecuteReader();
 
-                    var profiles = new List<UserProfile>();
+                    var profiles = new List<User>();
                     while (reader.Read())
                     {
-                        profiles.Add(new UserProfile()
+                        profiles.Add(new User()
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
-                            FirstName = DbUtils.GetString(reader, "FirstName"),
-                            LastName = DbUtils.GetString(reader, "LastName"),
-                            DisplayName = DbUtils.GetString(reader, "DisplayName"),
+                            Name = DbUtils.GetString(reader, "Name"),
                             Email = DbUtils.GetString(reader, "Email"),
-                            CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTime"),
-                            ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
                             UserTypeId = DbUtils.GetInt(reader, "UserTypeId"),
                             UserType = new UserType()
                             {
                                 Id = DbUtils.GetInt(reader, "UserTypeId"),
                                 Name = DbUtils.GetString(reader, "UserTypeName"),
                             },
-                            UserStatusId = DbUtils.GetInt(reader, "UserStatusId"),
-                            UserStatus = new UserStatus()
-                            {
-                                Id = DbUtils.GetInt(reader, "UserStatusId"),
-                                Name = DbUtils.GetString(reader, "UserStatusName"),
-                            },
-                            Password = DbUtils.GetNullableString(reader, "Password")
+                           
                         });
                     }
                     reader.Close();
@@ -65,7 +54,7 @@ namespace MaxAuto.Repositories
             }
         }
 
-        public List<UserProfile> GetByStatusId(int id)
+        public List<User> GetByStatusId(int id)
         {
             using (var conn = Connection)
             {
@@ -73,14 +62,11 @@ namespace MaxAuto.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                         SELECT up.Id, up.FirstName, up.LastName, up.DisplayName, 
-                               up.Email, up.CreateDateTime, up.ImageLocation, up.UserTypeId, up.UserStatusId, up.Password,
-                               ut.Name AS UserTypeName, us.Name AS UserStatusName
-                          FROM UserProfile up
-                               LEFT JOIN UserType ut on up.UserTypeId = ut.Id
-                               LEFT JOIN UserStatus us on up.UserStatusId = us.Id
-                          WHERE up.UserStatusId = @id
-                         ORDER BY up.DisplayName";
+                         SELECT u.Id, u.Name, u.Email, u.UserTypeId,
+                               ut.Name AS UserTypeName
+                          FROM [User] u
+                               LEFT JOIN UserType ut on u.UserTypeId = ut.Id
+                         ORDER BY u.Name";
 
                     DbUtils.AddParameter(cmd, "@id", id);
 
@@ -88,31 +74,22 @@ namespace MaxAuto.Repositories
 
                     var reader = cmd.ExecuteReader();
 
-                    var profiles = new List<UserProfile>();
+                    var profiles = new List<User>();
                     while (reader.Read())
                     {
-                        profiles.Add(new UserProfile()
+                        profiles.Add(new User()
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
-                            FirstName = DbUtils.GetString(reader, "FirstName"),
-                            LastName = DbUtils.GetString(reader, "LastName"),
-                            DisplayName = DbUtils.GetString(reader, "DisplayName"),
+                            Name = DbUtils.GetString(reader, "Name"),
                             Email = DbUtils.GetString(reader, "Email"),
-                            CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTime"),
-                            ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
                             UserTypeId = DbUtils.GetInt(reader, "UserTypeId"),
                             UserType = new UserType()
                             {
                                 Id = DbUtils.GetInt(reader, "UserTypeId"),
                                 Name = DbUtils.GetString(reader, "UserTypeName"),
-                            },
-                            UserStatusId = DbUtils.GetInt(reader, "UserStatusId"),
-                            UserStatus = new UserStatus()
-                            {
-                                Id = DbUtils.GetInt(reader, "UserStatusId"),
-                                Name = DbUtils.GetString(reader, "UserStatusName"),
-                            },
-                            Password = DbUtils.GetNullableString(reader, "Password")
+                                },
+
+                            
                         });
                     }
                     reader.Close();
@@ -122,7 +99,7 @@ namespace MaxAuto.Repositories
             }
         }
 
-        public UserProfile GetByEmail(string email)
+        public User GetByEmail(string email)
         {
             using (var conn = Connection)
             {
@@ -130,53 +107,41 @@ namespace MaxAuto.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT up.Id, up.FirstName, up.LastName, up.DisplayName, 
-                               up.Email, up.CreateDateTime, up.ImageLocation, up.UserTypeId, up.UserStatusId, up.Password,
-                               ut.Name AS UserTypeName, us.Name AS UserStatusName
-                          FROM UserProfile up
-                               LEFT JOIN UserType ut on up.UserTypeId = ut.Id
-                               LEFT JOIN UserStatus us on up.UserStatusId = us.Id
+                        SELECT u.Id, u.Name, u.Email, u.UserTypeId,
+                               ut.Name AS UserTypeName
+                          FROM [User] u
+                               LEFT JOIN UserType ut on u.UserTypeId = ut.Id
                          WHERE Email = @email";
 
                     DbUtils.AddParameter(cmd, "@email", email);
 
-                    UserProfile userProfile = null;
+                    User user = null;
 
                     var reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
-                        userProfile = new UserProfile()
+                        user = new User()
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
-                            FirstName = DbUtils.GetString(reader, "FirstName"),
-                            LastName = DbUtils.GetString(reader, "LastName"),
-                            DisplayName = DbUtils.GetString(reader, "DisplayName"),
+                            Name = DbUtils.GetString(reader, "Name"),
                             Email = DbUtils.GetString(reader, "Email"),
-                            CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTime"),
-                            ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
                             UserTypeId = DbUtils.GetInt(reader, "UserTypeId"),
                             UserType = new UserType()
                             {
                                 Id = DbUtils.GetInt(reader, "UserTypeId"),
                                 Name = DbUtils.GetString(reader, "UserTypeName"),
                             },
-                            UserStatusId = DbUtils.GetInt(reader, "UserStatusId"),
-                            UserStatus = new UserStatus()
-                            {
-                                Id = DbUtils.GetInt(reader, "UserStatusId"),
-                                Name = DbUtils.GetString(reader, "UserStatusName"),
-                            },
-                            Password = DbUtils.GetNullableString(reader, "Password")
+    
                         };
                     }
                     reader.Close();
 
-                    return userProfile;
+                    return user;
                 }
             }
         }
 
-        public UserProfile GetById(int Id)
+        public User GetById(int Id)
         {
             using (var conn = Connection)
             {
@@ -184,95 +149,56 @@ namespace MaxAuto.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT up.Id, up.FirstName, up.LastName, up.DisplayName, 
-                               up.Email, up.CreateDateTime, up.ImageLocation, up.UserTypeId, up.UserStatusId, up.Password,
-                               ut.Name AS UserTypeName, us.Name AS UserStatusName
-                          FROM UserProfile up
-                               LEFT JOIN UserType ut on up.UserTypeId = ut.Id
-                               LEFT JOIN UserStatus us on up.UserStatusId = us.Id
-                         WHERE up.Id = @Id";
+                        SELECT u.Id, u.Name, u.Email, u.UserTypeId, 
+                               ut.Name AS UserTypeName
+                          FROM [User] u
+                               LEFT JOIN UserType ut on u.UserTypeId = ut.Id
+                         WHERE u.Id = @Id";
 
                     DbUtils.AddParameter(cmd, "@Id", Id);
 
-                    UserProfile userProfile = null;
+                    User user = null;
 
                     var reader = cmd.ExecuteReader();
                     if (reader.Read())
-                    {
-                        userProfile = new UserProfile()
+
+                        user = new User()
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
-                            FirstName = DbUtils.GetString(reader, "FirstName"),
-                            LastName = DbUtils.GetString(reader, "LastName"),
-                            DisplayName = DbUtils.GetString(reader, "DisplayName"),
+                            Name = DbUtils.GetString(reader, "Name"),
                             Email = DbUtils.GetString(reader, "Email"),
-                            CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTime"),
-                            ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
                             UserTypeId = DbUtils.GetInt(reader, "UserTypeId"),
                             UserType = new UserType()
                             {
                                 Id = DbUtils.GetInt(reader, "UserTypeId"),
                                 Name = DbUtils.GetString(reader, "UserTypeName"),
                             },
-                            UserStatusId = DbUtils.GetInt(reader, "UserStatusId"),
-                            UserStatus = new UserStatus()
-                            {
-                                Id = DbUtils.GetInt(reader, "UserStatusId"),
-                                Name = DbUtils.GetString(reader, "UserStatusName"),
-                            },
-                            Password = DbUtils.GetNullableString(reader, "Password")
+                         
                         };
-                    }
-                    reader.Close();
+                
+                reader.Close();
 
-                    return userProfile;
-                }
+                return user;
             }
         }
+    }
 
-        public void Add(UserProfile userProfile)
+        public void Add(User user)
         {
             using (var conn = Connection)
             {
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO UserProfile (FirstName, LastName, DisplayName, 
-                                                                    Email, CreateDateTime, ImageLocation, UserTypeId, UserStatusId, Password)
+                    cmd.CommandText = @"INSERT INTO [User] (Name, Email, UserTypeId, )
                                             OUTPUT INSERTED.ID
-                                            VALUES (@FirstName, @LastName, @DisplayName, 
-                                                    @Email, @CreateDateTime, @ImageLocation, @UserTypeId, @UserStatusId, @Password)";
-                    DbUtils.AddParameter(cmd, "@FirstName", userProfile.FirstName);
-                    DbUtils.AddParameter(cmd, "@LastName", userProfile.LastName);
-                    DbUtils.AddParameter(cmd, "@DisplayName", userProfile.DisplayName);
-                    DbUtils.AddParameter(cmd, "@Email", userProfile.Email);
-                    DbUtils.AddParameter(cmd, "@CreateDateTime", userProfile.CreateDateTime);
-                    DbUtils.AddParameter(cmd, "@ImageLocation", userProfile.ImageLocation);
-                    DbUtils.AddParameter(cmd, "@UserTypeId", userProfile.UserTypeId);
-                    DbUtils.AddParameter(cmd, "@UserStatusId", userProfile.UserStatusId);
-                    DbUtils.AddParameter(cmd, "@Password", DbUtils.ValueOrDBNull(userProfile.Password));
+                                            VALUES (@Name, @Email, @UserTypeId, )";
+                    DbUtils.AddParameter(cmd, "@Name", user.Name);
+                    DbUtils.AddParameter(cmd, "@Email", user.Email);
+                    DbUtils.AddParameter(cmd, "@UserTypeId", user.UserTypeId);
 
-                    userProfile.Id = (int)cmd.ExecuteScalar();
-                }
-            }
-        }
 
-        public void UpdateStatusId(UserProfile user)
-        {
-            using (var conn = Connection)
-            {
-                conn.Open();
-                using (var cmd = conn.CreateCommand())
-                {
-                    cmd.CommandText = @"
-                        UPDATE UserProfile
-                           SET UserStatusId = @UserStatusId
-                           WHERE Id = @Id";
-
-                    DbUtils.AddParameter(cmd, "@UserStatusId", user.UserStatusId);
-                    DbUtils.AddParameter(cmd, "@Id", user.Id);
-
-                    cmd.ExecuteNonQuery();
+                    user.Id = (int)cmd.ExecuteScalar();
                 }
             }
         }

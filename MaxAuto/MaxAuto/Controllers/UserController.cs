@@ -8,11 +8,11 @@ namespace MaxAuto.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserProfileController : ControllerBase
+    public class UserController : ControllerBase
     {
         //private readonly IUserProfileRepository _userProfileRepository;
         private readonly IUserRepository _userRepository;
-        public UserProfileController(IUserRepository userRepository)
+        public UserController(IUserRepository userRepository)
         {
             //_userProfileRepository = userProfileRepository;
             _userRepository = userRepository;
@@ -48,40 +48,36 @@ namespace MaxAuto.Controllers
             return Ok(profiles);
         }
 
-        [HttpGet("GetByStatusId/{id}")]
-        public IActionResult GetByStatusId(int id)
-        {
-            var profiles = _userRepository.GetByStatusId(id);
-            return Ok(profiles);
-        }
+        //[HttpGet("GetByStatusId/{id}")]
+        //public IActionResult GetByStatusId(int id)
+        //{
+        //    var profiles = _userRepository.GetByStatusId(id);
+        //    return Ok(profiles);
+        //}
 
         [HttpPost]
-        public IActionResult Post(UserProfile userProfile)    //POST method to SET the UserStatusId IF one isn't set already.
+        public IActionResult Post(User user)    //POST method to SET the UserStatusId IF one isn't set already.
         {
-            userProfile.CreateDateTime = DateTime.Now;
-            userProfile.UserTypeId = UserType.AUTHOR_ID;
-            _userRepository.Add(userProfile);
-            if (userProfile.UserStatusId == 0)
-            {
-                userProfile.UserStatusId = UserStatus.ACTIVE_ID;
-            }
+            user.UserTypeId = UserType.AUTHOR_ID;
+            _userRepository.Add(user);
+
             return CreatedAtAction(
                 "GetByEmail",
-                new { email = userProfile.Email },
-                userProfile);
+                new { email = user.Email },
+                user);
         }
 
 
-        [HttpPut("UpdateUserStatus/{id}")]
-        public IActionResult Put(int id, UserProfile user)
-        {
-            if (id != user.Id)
-            {
-                return BadRequest();
-            }
+        //[HttpPut("UpdateUserStatus/{id}")]
+        //public IActionResult Put(int id, UserProfile user)
+        //{
+        //    if (id != user.Id)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _userRepository.UpdateStatusId(user);
-            return NoContent();
-        }
+        //    _userRepository.UpdateStatusId(user);
+        //    return NoContent();
+        //}
     }
 }
