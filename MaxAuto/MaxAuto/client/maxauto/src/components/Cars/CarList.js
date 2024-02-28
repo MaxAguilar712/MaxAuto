@@ -21,9 +21,9 @@ import './CarList.css';
 	  getCars();
 	}, []); 
 	return (
-	  <div className="container">
+	  <div className='rows' >
 		<div className="row">
-		  <div className="cards-row">
+		  <div className="row" >
 		  {/* <CarForm updateCarsState = {getCars}/>
 		  <CarSearch /> */}
 			{cars.map((car) => (

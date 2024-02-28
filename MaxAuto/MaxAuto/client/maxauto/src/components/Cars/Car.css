@@ -1,7 +1,10 @@
-p {
-    align-self:center;
-    font:bolder;
-    font-size: xx-large;
-    font-family: monospace;
-};
+.Shadow {
+    align-self: center;
+    width: 90%;
+    box-shadow: 10px 10px 20px #000000;
+}
 
+.h-10 {
+    margin: 5px;
+    box-shadow: 10px 10px 20px #000000;
+}
