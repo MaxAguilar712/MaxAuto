@@ -5,18 +5,18 @@ import './Car.css';
 
 export const Car = ({ car }) => {
   return (
-    <Card style={{width:"50%", height:"auto"}}>
-      <p className="makeBold">
+    <Card className='h-10' style={{margin: "2em", width:" 35%", height:"auto", background: "#727272"}}>
+      <p className="text-center" style={{paddingTop: "2vh", fontSize: "2rem", color: "white"}}>
         <p className="text-left px-2">{car?.year} {car?.manufacturer} {car?.name}</p>
 		<p className="text-left px-2">Transmission: {car?.transmission}</p>
 		<p className="text-left px-2"> Mileage: {car?.mileage} </p>
       </p>
-      <CardImg top src={car.imageUrl} alt={car.name} />
-      <CardBody>
+      <CardImg className="Shadow" top src={car.imageUrl} alt={car.name}  />
+      <CardBody >
          <p>
-          <Link to={`/cars/${car.id}`}>
+          <p style={{color:"white"}}>
           <strong> ${car.price}.00</strong>
-          </Link>
+          </p>
         </p>
         {/* <p>{car.caption}</p> */}
         {/* <p>Comments:</p>
