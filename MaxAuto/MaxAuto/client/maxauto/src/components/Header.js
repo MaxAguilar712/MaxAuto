@@ -56,13 +56,13 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 										Category Management
 									</NavLink>
 								</NavItem> */}
-								{user && user.userTypeId == 1 && (
+								{/* {user && user.userTypeId == 1 && (
 									<NavItem>
 										<NavLink tag={RRNavLink} to='/users'>
 											Users
 										</NavLink>
 									</NavItem>
-								)}
+								)} */}
 							</>
 						)}
 					</Nav>
