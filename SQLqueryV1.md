@@ -69,7 +69,10 @@ VALUES
   (8, 19500, 1989, 'Soarer GT Twin Turbo', 'MT', 'Toyota', 110000, 'https://i.imgur.com/dNbpoW9.jpeg', 22000),
   (9, 9500, 1991, 'Silvia S13', 'MT', 'Nissan', 190000, 'https://i.imgur.com/W9OxbF9.jpeg', 11500),
   (10, 7000, 1987, '200SX S12', 'MT', 'Nissan', 140000, 'https://i.imgur.com/9X9qeYt.jpeg', 8800);
-
+  (11, 19500, 1987, 'RX-7 Turbo II', 'MT', 'Mazda', 120000, 'https://i.imgur.com/Aaa7TFs.jpeg', 23000);
+  (12, 1200, 2000, 'Focus SE', 'AT', 'Ford', 222000, 'https://i.imgur.com/i1s4pXZ.jpeg', 2000);
+  (13, 1100, 2000, 'Taurus SE', 'AT', 'Ford', 251000, 'https://i.imgur.com/Aaa7TFs.jpeg', 2000);
+  
 
 SET IDENTITY_INSERT [User] ON
 INSERT INTO [User]
