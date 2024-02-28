@@ -35,18 +35,18 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 									</NavLink>
 								</NavItem>
 								<NavItem/>
-								<NavLink tag={RRNavLink} to='/my-posts'>My Posts</NavLink>
+								<NavLink tag={RRNavLink} to='/car-market'>Car Market</NavLink>
 							<NavItem>
-									<NavLink tag={RRNavLink} to='/post'>
-										Posts
+									<NavLink tag={RRNavLink} to='/part-market'>
+										Part Market
 									</NavLink>
 								</NavItem>
 								<NavItem>
-									<NavLink tag={RRNavLink} to='/postForm'>
-										New Post
+									<NavLink tag={RRNavLink} to='/my-garage'>
+										My Garage
 									</NavLink>
 								</NavItem>
-								<NavItem>
+								{/* <NavItem>
 									<NavLink tag={RRNavLink} to='/Tags'>
 										Tag Management
 									</NavLink>
@@ -55,11 +55,11 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 									<NavLink tag={RRNavLink} to='/Categories'>
 										Category Management
 									</NavLink>
-								</NavItem>
+								</NavItem> */}
 								{user && user.userTypeId == 1 && (
 									<NavItem>
 										<NavLink tag={RRNavLink} to='/users'>
-											User s
+											Users
 										</NavLink>
 									</NavItem>
 								)}

@@ -1,6 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Hello from "./Hello";
+
+// import { CarList } from "./Cars/CarList";
+// import { Car } from "./Cars/Car";
+import { CarList} from "./Cars/CarList";
 // import { TagList } from "./tags/TagList.js";
 // import { AddTag } from "./tags/AddTag.js";
 // import { DeleteTag } from "./tags/DeleteTag.js";
@@ -30,11 +34,11 @@ export default function ApplicationViews({ isLoggedIn }) {
 	return (
 		<Routes>
 			<Route path='/' element={<Hello />} />
-			{/* <Route path='/Tags' element={<TagList />} />
-			<Route path='/Tags/Add' element={<AddTag />} />
-			<Route path='/Tags/Delete/:id' element={<DeleteTag />} />
-			<Route path='/Tags/Edit/:id' element={<EditTag />} />
-			<Route path='/post' element={<PostContainer />} />
+			<Route path='/car-market' element={<CarList />} />
+			{/* <Route path='/part-market' element={<PartMarket />} />
+			<Route path='/my-garage' element={<MyGarage />} /> */}
+			{/* <Route path='/Tags/Edit/:id' element={<EditTag />} /> */}
+			{/* <Route path='/post' element={<PostContainer />} />
 			<Route path="/post/:id" element={<PostDetails />} />
 			<Route path="/postForm/" element={<PostForm />} />
 			<Route path="/my-posts" element={<UserPosts /> } />
