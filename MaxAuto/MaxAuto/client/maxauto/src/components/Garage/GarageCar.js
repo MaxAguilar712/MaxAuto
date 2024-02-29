@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, CardImg, CardBody, CardFooter, Button } from "reactstrap";
 import { Link } from "react-router-dom";
-import './Car.css';
+// import './Car.css';
 
-export const Car = ({ car }) => {
+export const GarageCar = ({ garageCar }) => {
 
 
 
@@ -21,11 +21,11 @@ export const Car = ({ car }) => {
   return (
     <Card className='h-10' style={{margin: "1.5em", width:" 500px", height:"auto", background: "#727272"}}> 
 	     <CardBody >      </CardBody>
-      <CardImg className="Shadow" style={{margin: "2vh"}} top src={car.imageUrl} alt={car.name}  />
+      <CardImg className="Shadow" style={{margin: "2vh"}} top src={garageCar.imageUrl} alt={garageCar.name}  />
 	  <div className="text-center" style={{paddingTop: "1vh", fontSize: "3vh ", color: "white"}}>
-        <p className="text-left px-2">{car?.year} {car?.manufacturer} {car?.name}</p>
-		<p className="text-left px-2">Transmission: {car?.transmission}</p>
-		<p className="text-left px-2"> Mileage: {car?.mileage} </p>
+        <p className="text-left px-2">{garageCar?.year} {garageCar?.manufacturer} {garageCar?.name}</p>
+		<p className="text-left px-2">Transmission: {garageCar?.transmission}</p>
+		<p className="text-left px-2"> Mileage: {garageCar?.mileage} </p>
       </div>
       
 
@@ -42,7 +42,7 @@ export const Car = ({ car }) => {
 
 	  <CardFooter>  
 		        <p style={{color:"white"}}>
-          		<strong> ${car.price}.00  </strong>
+          		<strong> ${garageCar.price}.00  </strong>
 				  <Button
 				
 					Dark
@@ -53,7 +53,7 @@ export const Car = ({ car }) => {
 						// navigate(`/Post/${post.id}/Comments`);
 					}}
 				>
-					Purchase
+					Parts
 				</Button></p>
 			</CardFooter>
     </Card>
