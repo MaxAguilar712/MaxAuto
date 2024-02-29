@@ -105,9 +105,7 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 					</Nav>
 				</Collapse>		
 				
-											<p classname="moneybar">
-										
-										
+									<p classname="moneybar">
 										
 											Wallet: ${user.money}
 									</p>
