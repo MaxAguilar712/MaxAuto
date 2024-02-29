@@ -19,7 +19,7 @@ namespace MaxAuto.Repositories
                 {
                     cmd.CommandText = @"
                          SELECT u.Id, u.Name, u.Email, u.UserTypeId,
-                               ut.Name AS UserTypeName 
+                               ut.Name AS UserTypeName, Money
                           FROM [User] u
                                LEFT JOIN UserType ut on u.UserTypeId = ut.Id
                          ORDER BY u.Name";
@@ -44,7 +44,7 @@ namespace MaxAuto.Repositories
                                 Id = DbUtils.GetInt(reader, "UserTypeId"),
                                 Name = DbUtils.GetString(reader, "UserTypeName"),
                             },
-                           
+                            Money = DbUtils.GetInt(reader, "Money"),
                         });
                     }
                     reader.Close();
@@ -63,7 +63,7 @@ namespace MaxAuto.Repositories
                 {
                     cmd.CommandText = @"
                          SELECT u.Id, u.Name, u.Email, u.UserTypeId,
-                               ut.Name AS UserTypeName
+                               ut.Name AS UserTypeName, Money
                           FROM [User] u
                                LEFT JOIN UserType ut on u.UserTypeId = ut.Id
                          ORDER BY u.Name";
@@ -88,8 +88,7 @@ namespace MaxAuto.Repositories
                                 Id = DbUtils.GetInt(reader, "UserTypeId"),
                                 Name = DbUtils.GetString(reader, "UserTypeName"),
                                 },
-
-                            
+                            Money = DbUtils.GetInt(reader, "Money"),
                         });
                     }
                     reader.Close();
@@ -108,7 +107,7 @@ namespace MaxAuto.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT u.Id, u.Name, u.Email, u.UserTypeId,
-                               ut.Name AS UserTypeName
+                               ut.Name AS UserTypeName, Money
                           FROM [User] u
                                LEFT JOIN UserType ut on u.UserTypeId = ut.Id
                          WHERE Email = @email";
@@ -131,7 +130,7 @@ namespace MaxAuto.Repositories
                                 Id = DbUtils.GetInt(reader, "UserTypeId"),
                                 Name = DbUtils.GetString(reader, "UserTypeName"),
                             },
-    
+                            Money = DbUtils.GetInt(reader, "Money"),
                         };
                     }
                     reader.Close();
@@ -173,7 +172,7 @@ namespace MaxAuto.Repositories
                                 Id = DbUtils.GetInt(reader, "UserTypeId"),
                                 Name = DbUtils.GetString(reader, "UserTypeName"),
                             },
-                         
+                            Money = DbUtils.GetInt(reader, "Money"),
                         };
                 
                 reader.Close();
@@ -190,13 +189,13 @@ namespace MaxAuto.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO [User] (Name, Email, UserTypeId, )
+                    cmd.CommandText = @"INSERT INTO [User] (Name, Email, UserTypeId, Money )
                                             OUTPUT INSERTED.ID
-                                            VALUES (@Name, @Email, @UserTypeId, )";
+                                            VALUES (@Name, @Email, @UserTypeId, Money )";
                     DbUtils.AddParameter(cmd, "@Name", user.Name);
                     DbUtils.AddParameter(cmd, "@Email", user.Email);
                     DbUtils.AddParameter(cmd, "@UserTypeId", user.UserTypeId);
-
+                    DbUtils.AddParameter(cmd, "@Money", user.Money);
 
                     user.Id = (int)cmd.ExecuteScalar();
                 }
