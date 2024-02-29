@@ -54,6 +54,26 @@ CREATE TABLE [Part] (
 )
 GO
 
+CREATE TABLE [CarGarage] (
+  [Id] integer PRIMARY KEY identity NOT NULL,
+  [Price] integer NOT NULL,
+  [Year] integer NOT NULL,
+  [Name] nvarchar(255) NOT NULL,
+  [Transmission] nvarchar(255),
+  [Manufacturer] nvarchar(255),
+  [Mileage] integer,
+  [ImageUrl] nvarchar(255),
+  [Worth] integer NOT NULL,
+  [UserId] integer NOT NULL,
+)
+GO
+
+SET IDENTITY_INSERT [CarGarage] ON
+INSERT INTO [CarGarage]
+  ([Id], [Price], [Year], [Name], [Transmission], [Manufacturer], [Mileage], [ImageUrl], [Worth], [UserId])
+VALUES 
+  (42069, 999999, 2023, 'TOMAHAWK X SRT', 'MT', 'Dodge', 150, 'https://assets.newatlas.com/dims4/default/098f9bb/2147483647/strip/true/crop/1620x1080+150+0/resize/1200x800!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2Farchive%2FCN015_042SRco1r7mk5pp8rn14gfprhdhbdlp.jpg', 999999, 1),
+
 
 SET IDENTITY_INSERT [Car] ON
 INSERT INTO [Car]
