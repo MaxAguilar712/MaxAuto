@@ -11,6 +11,8 @@ import {
 	NavLink,
 } from "reactstrap";
 
+import User from "./UserProfile/UserProfile";
+
 export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const toggle = () => setIsOpen(!isOpen);
@@ -83,6 +85,7 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 										Logout
 									</a>
 								</NavItem>
+								
 							</>
 						)}
 						{!isLoggedIn && (
@@ -100,8 +103,20 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 							</>
 						)}
 					</Nav>
-				</Collapse>
+				</Collapse>		
+				
+											<p classname="moneybar">
+										
+										
+										
+											Wallet: ${user.money}
+									</p>
 			</Navbar>
+
+		
+
+									
+							
 		</div>
 	);
 };

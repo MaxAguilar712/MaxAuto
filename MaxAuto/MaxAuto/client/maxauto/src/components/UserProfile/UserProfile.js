@@ -3,7 +3,7 @@ import { getUserById } from "../../Managers/UserManager";
 import { useParams } from "react-router-dom";
 
 export default function User() {
-  const [users, setUsers] = useState([]);
+  const [user, setUsers] = useState([]);
 
   const { id } = useParams();
 
