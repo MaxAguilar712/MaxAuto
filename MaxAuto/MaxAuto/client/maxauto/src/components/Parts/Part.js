@@ -24,6 +24,7 @@ export const Part = ({ part }) => {
 				>
 					Purchase
 				</Button>
+        
         </p>
       </CardBody>
     </Card>
