@@ -44,10 +44,10 @@ CREATE TABLE [Car] (
 )
 GO
 
-CREATE TABLE [User] (
+CREATE TABLE [CarPart] (
   [Id] integer PRIMARY KEY identity NOT NULL,
-  [PartId] integer NOT NULL,
-  [CarId] integer  NOT NULL,
+  [GarageCarPartId] integer NOT NULL,
+  [GarageCarId] integer  NOT NULL,
 )
 
 CREATE TABLE [Part] (
