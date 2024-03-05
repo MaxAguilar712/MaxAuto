@@ -1,22 +1,69 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardImg, CardBody, CardFooter, Button } from "reactstrap";
+import { buyGarageCar } from "../../APIManagers/GarageManager"; 
 import { Link } from "react-router-dom";
 import './Car.css';
+import User from "../UserProfile/UserProfile";
+import { updateMoney } from "../../Managers/UserManager";
 
 export const Car = ({ car }) => {
 
+	// const [user, setUsers] = useState([]);
 
 
-	// const buyCar = () => {
+	const user = JSON.parse(localStorage.getItem("user"))
 
 
-	// 	console.log(car)
-	// 	assertModuleDeclaration(car);
-	// }
+	const [garageCar, setGarageCar] = useState({
+		Price: 0,
+		Year: 0,
+		Name: "",
+		Transmission: "",
+		Manufacturer: "",
+	    Mileage: 0,
+		ImageUrl: "",
+		Worth: 0
+	  })
 
 
 
 
+
+	const saveCar = () => {
+
+		if (user.money >= car.price) {
+		
+
+		garageCar.Price = car.price;
+		garageCar.Year = car.year;
+		garageCar.Name = car.name;
+		garageCar.Transmission = car.transmission;
+		garageCar.Manufacturer = car.manufacturer;
+		garageCar.Mileage = car.mileage;
+		garageCar.ImageUrl = car.imageUrl;
+		garageCar.Worth = car.worth;
+
+		// console.log(garageCar)
+		buyGarageCar(garageCar);
+			
+
+
+
+
+
+			user.money -= car.price;
+
+			updateMoney(user);
+
+			localStorage.setItem("user", JSON.stringify(user))
+			console.log(user);
+
+			
+
+	} else {
+		window.alert(`insufficient funds, you need ${car.price}`)
+		}
+	  };
 
   return (
     <Card className='h-10' style={{margin: "1.5em", width:" 500px", height:"auto", background: "#727272"}}> 
@@ -43,15 +90,10 @@ export const Car = ({ car }) => {
 	  <CardFooter>  
 		        <p style={{color:"white"}}>
           		<strong> ${car.price}.00  </strong>
-				  <Button
-				
+				  <Button onClick={saveCar}
 					Dark
 					color='Dark'
 					className='me-2 btn-dark'
-					onClick={(e) => {
-						e.preventDefault();
-						// navigate(`/Post/${post.id}/Comments`);
-					}}
 				>
 					Purchase
 				</Button></p>

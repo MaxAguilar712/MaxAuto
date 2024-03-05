@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MaxAuto.Repositories;
 using MaxAuto.Models;
+using Azure;
 
 
 
@@ -36,6 +37,12 @@ namespace MaxAuto.Controllers
             return Ok(garagecar);
         }
 
+        [HttpPost]
+        public IActionResult Post(CarGarage garagecar)
+        {
+            _carGarageRepository.Add(garagecar);
+            return CreatedAtAction("Get", new { id = garagecar.Id }, garagecar);
+        }
 
 
         //public IActionResult Index()

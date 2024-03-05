@@ -106,18 +106,18 @@ namespace MaxAuto.Repositories
                 {
                     cmd.CommandText = @"
                         INSERT INTO CarGarage (
-                            c.Id AS CarId, c.Price, c.Year, c.Name, c.Transmission, c.Manufacturer,c.Mileage, c.ImageUrl AS CarImageUrl, c.Worth, UserId
+                           Price, Year, Name, Transmission, Manufacturer, Mileage, ImageUrl, Worth, UserId)
                         OUTPUT INSERTED.ID
                         VALUES (
-                            @CarId, @Price, @Year, @Name, @Transmission, @Manufacturer, @Mileage, @CarImageUrl, @Worth, @UserId)";
-                    cmd.Parameters.AddWithValue("@CarId", cargarage.Id);
-                    cmd.Parameters.AddWithValue("@Price", cargarage.Id);
+                             @Price, @Year, @Name, @Transmission, @Manufacturer, @Mileage, @ImageUrl, @Worth, @UserId)";
+;
+                    cmd.Parameters.AddWithValue("@Price", cargarage.Price);
                     cmd.Parameters.AddWithValue("@Year", cargarage.Year);
                     cmd.Parameters.AddWithValue("@Name", cargarage.Name);
                     cmd.Parameters.AddWithValue("@Transmission", cargarage.Transmission);
                     cmd.Parameters.AddWithValue("@Manufacturer", cargarage.Manufacturer);
                     cmd.Parameters.AddWithValue("@Mileage", cargarage.Mileage);
-                    cmd.Parameters.AddWithValue("@CarImageUrl", cargarage.ImageUrl);
+                    cmd.Parameters.AddWithValue("@ImageUrl", cargarage.ImageUrl);
                     cmd.Parameters.AddWithValue("@Worth", cargarage.Worth);
                     cmd.Parameters.AddWithValue("@UserId", cargarage.UserId);
 

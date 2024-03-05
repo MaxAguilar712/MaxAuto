@@ -41,15 +41,15 @@ export const getUserById = (id) => {
 	);
 };
 
-// export const updateUserStatus = (user) => {
-// 	return fetch(`${apiUrl}/api/UserProfile/UpdateUserStatus/${user.id}`, {
-// 		method: "PUT",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		body: JSON.stringify(user),
-// 	});
-// };
+export const updateMoney = (user) => {
+	return fetch(`${apiUrl}/api/User/UpdateMoney/${user.id}`, {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(user),
+	});
+};
 
 // return (
 //   <UserProfileContext.Provider value={{ isLoggedIn, login, logout, register,  }}>

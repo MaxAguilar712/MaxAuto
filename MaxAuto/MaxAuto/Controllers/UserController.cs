@@ -68,16 +68,16 @@ namespace MaxAuto.Controllers
         }
 
 
-        //[HttpPut("UpdateUserStatus/{id}")]
-        //public IActionResult Put(int id, UserProfile user)
-        //{
-        //    if (id != user.Id)
-        //    {
-        //        return BadRequest();
-        //    }
+        [HttpPut("UpdateMoney/{id}")]
+        public IActionResult Put(int id, User user)
+        {
+            if (id != user.Id)
+            {
+                return BadRequest();
+            }
 
-        //    _userRepository.UpdateStatusId(user);
-        //    return NoContent();
-        //}
+            _userRepository.UpdateMoney(user);
+            return NoContent();
+        }
     }
 }
