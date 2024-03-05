@@ -87,7 +87,7 @@ namespace MaxAuto.Repositories
                             {
                                 Id = DbUtils.GetInt(reader, "UserTypeId"),
                                 Name = DbUtils.GetString(reader, "UserTypeName"),
-                                },
+                            },
                             Money = DbUtils.GetInt(reader, "Money"),
                         });
                     }
@@ -148,7 +148,7 @@ namespace MaxAuto.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT u.Id, u.Name, u.Email, u.UserTypeId, 
+                        SELECT u.Id, u.Name, u.Email, u.UserTypeId, u.Money,
                                ut.Name AS UserTypeName
                           FROM [User] u
                                LEFT JOIN UserType ut on u.UserTypeId = ut.Id
@@ -174,13 +174,13 @@ namespace MaxAuto.Repositories
                             },
                             Money = DbUtils.GetInt(reader, "Money"),
                         };
-                
-                reader.Close();
 
-                return user;
+                    reader.Close();
+
+                    return user;
+                }
             }
         }
-    }
 
         public void Add(User user)
         {
@@ -198,6 +198,28 @@ namespace MaxAuto.Repositories
                     DbUtils.AddParameter(cmd, "@Money", user.Money);
 
                     user.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+
+        public void UpdateMoney(User user)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE [User]
+                           SET Money = @Money
+                           WHERE Id = @Id";
+
+                    DbUtils.AddParameter(cmd, "@Money", user.Money);
+                    DbUtils.AddParameter(cmd, "@Id", user.Id);
+
+                    cmd.ExecuteNonQuery();
+
                 }
             }
         }

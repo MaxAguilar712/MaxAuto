@@ -16,8 +16,6 @@ namespace MaxAuto.Models
             [MaxLength(255)]
             public string Email { get; set; }
 
-            [DataType(DataType.Url)]
-            [MaxLength(255)]
 
             [Required]
             public int UserTypeId { get; set; }

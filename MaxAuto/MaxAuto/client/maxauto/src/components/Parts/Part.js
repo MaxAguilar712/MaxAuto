@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardImg, CardBody } from "reactstrap";
+import { Card, CardImg, CardBody, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 // import './Car.css';
 
@@ -17,6 +17,13 @@ export const Part = ({ part }) => {
           <p style={{color:"white"}}>
           <strong> ${part.price}.00</strong>
           </p>
+          <Button onClick={""}
+					Dark
+					color='Dark'
+					className='me-2 btn-dark'
+				>
+					Purchase
+				</Button>
         </p>
       </CardBody>
     </Card>

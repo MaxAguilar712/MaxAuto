@@ -9,6 +9,6 @@ namespace MaxAuto.Repositories
         User GetByEmail(string email);
         User GetById(int Id);
         //List<UserProfile> GetByStatusId(int id);
-        //void UpdateStatusId(UserProfile user);
+        void UpdateMoney(User user);
     }
 }

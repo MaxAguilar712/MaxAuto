@@ -17,7 +17,10 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const toggle = () => setIsOpen(!isOpen);
 
+
 	const user = JSON.parse(localStorage.getItem("user"));
+
+
 
 	return (
 		<div>
@@ -107,7 +110,7 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 				
 									<p classname="moneybar">
 										
-											Wallet: ${user.money}
+											Wallet: ${user?.money}
 									</p>
 			</Navbar>
 
