@@ -44,7 +44,11 @@ CREATE TABLE [Car] (
 )
 GO
 
-
+CREATE TABLE [User] (
+  [Id] integer PRIMARY KEY identity NOT NULL,
+  [PartId] integer NOT NULL,
+  [CarId] integer  NOT NULL,
+)
 
 CREATE TABLE [Part] (
   [Id] integer PRIMARY KEY identity NOT NULL,
