@@ -41,11 +41,11 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 								</NavItem>
 								<NavItem/>
 								<NavLink tag={RRNavLink} to='/car-market'>Car Market</NavLink>
-							<NavItem>
+							{/* <NavItem>
 									<NavLink tag={RRNavLink} to='/part-market'>
 										Part Market
 									</NavLink>
-								</NavItem>
+								</NavItem> */}
 								<NavItem>
 									<NavLink tag={RRNavLink} to='/my-garage'>
 										My Garage

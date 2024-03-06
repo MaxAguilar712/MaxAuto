@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardImg, CardBody, CardFooter, Button } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Links, useNavigate } from "react-router-dom";
+import { updateMoney } from "../../Managers/UserManager";
 // import './Car.css';
 
+
+
 export const GarageCar = ({ garageCar }) => {
+
+	const [inputPrice, setInputPrice] = useState("");
+
+
+	const GCWorth = garageCar.worth;
+
+	const handleChange = (e) => {
+		setInputPrice(e.target.value);
+	  }
+	const navigate = useNavigate();
+	// const goToPartPage = () => {
+	const user = JSON.parse(localStorage.getItem("user"))
+
+		
+	// 	 navigate('/part-market');
+	// 	window.location.reload();
+
+	// }
 
 
 
@@ -19,13 +40,14 @@ export const GarageCar = ({ garageCar }) => {
 
 
   return (
-    <Card className='h-10' style={{margin: "1.5em", width:" 500px", height:"auto", background: "#727272"}}> 
+    <Card className='h-10' style={{margin: "1.5em", width:" 375px", height:"auto", background: "#727272"}}> 
 	     <CardBody >      </CardBody>
       <CardImg className="Shadow" style={{margin: "2vh"}} top src={garageCar.imageUrl} alt={garageCar.name}  />
 	  <div className="text-center" style={{paddingTop: "1vh", fontSize: "3vh ", color: "white"}}>
         <p className="text-left px-2">{garageCar?.year} {garageCar?.manufacturer} {garageCar?.name}</p>
 		<p className="text-left px-2">Transmission: {garageCar?.transmission}</p>
 		<p className="text-left px-2"> Mileage: {garageCar?.mileage} </p>
+		<p className="text-left px-2"> Spent: ${garageCar.price}.00  </p>
       </div>
       
 
@@ -42,7 +64,7 @@ export const GarageCar = ({ garageCar }) => {
 
 	  <CardFooter>  
 		        <p style={{color:"white"}}>
-          		<strong> ${garageCar.price}.00  </strong>
+          		
 				  <Button
 				
 					Dark
@@ -50,11 +72,52 @@ export const GarageCar = ({ garageCar }) => {
 					className='me-2 btn-dark'
 					onClick={(e) => {
 						e.preventDefault();
-						// navigate(`/Post/${post.id}/Comments`);
+						navigate(`/part-market/${garageCar.id}/`);
 					}}
 				>
 					Parts
-				</Button></p>
+				</Button>
+				<> </>
+			<label for="sellCar"> Sell Price: </label>
+
+			<input type="number" 
+			id="sellCar" 
+			name="sellCar" 
+			placeholder='Enter $$'
+			min="0" 
+			max="9999999"
+			onChange={handleChange} 
+			value={inputPrice}
+			/>
+				<Button
+				
+				Dark
+				color='Dark'
+				className='SellButton'
+				onClick={(e) => {
+					e.preventDefault();
+					console.log(inputPrice);
+
+					if (inputPrice <= GCWorth) {
+						console.log(user.money)
+						user.money = user.money + parseInt(inputPrice)
+						
+						console.log("CAR SOLD");
+						console.log(user.money);
+						updateMoney(user);
+						localStorage.setItem("user", JSON.stringify(user));
+						
+
+						alert(`you could have got $ ${GCWorth - inputPrice} more`)
+						window.location.reload();
+					} else { console.log("NOT SOLD") 
+				alert('Asking price is too high, try a lower price...')}
+				}}
+			>
+				Sell
+			</Button>
+				</p>
+
 			</CardFooter>
     </Card>
   );

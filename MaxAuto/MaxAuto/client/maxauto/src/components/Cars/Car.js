@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardImg, CardBody, CardFooter, Button } from "reactstrap";
 import { buyGarageCar } from "../../APIManagers/GarageManager"; 
-import { Link } from "react-router-dom";
+import { Link, Redirect, useNavigate } from "react-router-dom";
 import './Car.css';
 import User from "../UserProfile/UserProfile";
 import { updateMoney } from "../../Managers/UserManager";
@@ -9,7 +9,14 @@ import { updateMoney } from "../../Managers/UserManager";
 export const Car = ({ car }) => {
 
 	// const [user, setUsers] = useState([]);
+		const navigate = useNavigate();
+		const goToGaragePage = () => {
 
+			
+ 			navigate('/my-garage');
+			window.location.reload();
+
+		}
 
 	const user = JSON.parse(localStorage.getItem("user"))
 
@@ -30,6 +37,9 @@ export const Car = ({ car }) => {
 
 
 	const saveCar = () => {
+
+
+
 
 		if (user.money >= car.price) {
 		
@@ -58,7 +68,7 @@ export const Car = ({ car }) => {
 			localStorage.setItem("user", JSON.stringify(user))
 			console.log(user);
 
-			
+			goToGaragePage()
 
 	} else {
 		window.alert(`insufficient funds, you need ${car.price}`)
@@ -66,7 +76,7 @@ export const Car = ({ car }) => {
 	  };
 
   return (
-    <Card className='h-10' style={{margin: "1.5em", width:" 500px", height:"auto", background: "#727272"}}> 
+    <Card className='h-10' style={{margin: "1.1em", width:"350px", height:"auto", background: "#303030"}}> 
 	     <CardBody >      </CardBody>
       <CardImg className="Shadow" style={{margin: "2vh"}} top src={car.imageUrl} alt={car.name}  />
 	  <div className="text-center" style={{paddingTop: "1vh", fontSize: "3vh ", color: "white"}}>
@@ -90,10 +100,10 @@ export const Car = ({ car }) => {
 	  <CardFooter>  
 		        <p style={{color:"white"}}>
           		<strong> ${car.price}.00  </strong>
-				  <Button onClick={saveCar}
+				  <Button className="glow-on-hover" onClick={saveCar}
 					Dark
 					color='Dark'
-					className='me-2 btn-dark'
+					// className='me-2 btn-dark'
 				>
 					Purchase
 				</Button></p>
