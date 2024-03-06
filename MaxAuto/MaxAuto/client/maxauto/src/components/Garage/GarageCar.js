@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card, CardImg, CardBody, CardFooter, Button } from "reactstrap";
 import { Links, useNavigate } from "react-router-dom";
 import { updateMoney } from "../../Managers/UserManager";
+import { deleteGarageCar } from "../../APIManagers/GarageManager";
 // import './Car.css';
 
 
@@ -108,7 +109,9 @@ export const GarageCar = ({ garageCar }) => {
 						localStorage.setItem("user", JSON.stringify(user));
 						
 
-						alert(`you could have got $ ${GCWorth - inputPrice} more`)
+						alert(`you could have got $ ${GCWorth - inputPrice} more`);
+
+						deleteGarageCar(garageCar.id);
 						window.location.reload();
 					} else { console.log("NOT SOLD") 
 				alert('Asking price is too high, try a lower price...')}

@@ -1,6 +1,7 @@
 ﻿using MaxAuto.Repositories;
 using MaxAuto.Models;
 using MaxAuto.Utils;
+using Microsoft.Data.SqlClient;
 
 namespace MaxAuto.Repositories
 {
@@ -123,6 +124,20 @@ namespace MaxAuto.Repositories
 
                     cargarage.Id = (int)cmd.ExecuteScalar();
                 }
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM CarGarage WHERE Id = @Id";
+                    DbUtils.AddParameter(cmd, "@Id", id);
+                    cmd.ExecuteNonQuery();
+                } 
             }
         }
     }
