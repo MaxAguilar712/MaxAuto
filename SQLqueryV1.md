@@ -96,7 +96,22 @@ VALUES
   (11, 19500, 1987, 'RX-7 Turbo II', 'MT', 'Mazda', 120000, 'https://i.imgur.com/Aaa7TFs.jpeg', 23000);
   (12, 1200, 2000, 'Focus SE', 'AT', 'Ford', 222000, 'https://i.imgur.com/i1s4pXZ.jpeg', 2000);
   (13, 1100, 2000, 'Taurus SE', 'AT', 'Ford', 251000, 'https://i.imgur.com/Aaa7TFs.jpeg', 2000);
-  
+  (14, 70000, 1991, 'NSX', 'MT', 'Acura', 65000, 'https://i.imgur.com/LwMTxpN.jpg', 90000),
+  (15, 7500, 1990, 'Miata NA', 'MT', 'Mazda', 77000, 'https://i.imgur.com/LwMTxpN.jpg', 10000),
+  (16, 15500, 2006, 'G35 Coupe', 'AT', 'Infiniti', 102000, 'https://i.imgur.com/2OG2gUX.jpg', 11000),
+  (17, 6500, 2008, 'Altima S', 'CVT', 'Nissan', 79000, 'https://i.imgur.com/cD7C2L6.jpg', 8500),
+  (18, 250000, 2005, 'SLR', 'AT', 'Mercedes-Benz', 8000, 'https://i.imgur.com/J0kEVAF.jpg', 400000),
+  (19, 10000, 1999, 'Mustang SVT Cobra', 'MT', 'Ford', 90000, 'https://i.imgur.com/jLX4O4M.jpg', 16000),
+  (20, 6000, 2007, 'Camry SE', 'MT', 'Toyota', 151000, 'https://i.imgur.com/XUfswrn.jpg', 7500),
+  (21, 27000, 2022, 'GR86 Premium', 'AT', 'Toyota', 25000, 'https://i.imgur.com/mgOUzyX.jpeg', 31000),
+  (22, 20000, 1986, 'Sprinter Trueno', 'MT', 'Toyota', 100600, 'https://i.imgur.com/qC9UFfF.jpg', 30000),
+  (23, 7000, 2008, 'Liberty', 'AT', 'Jeep', 174000, 'https://i.imgur.com/SIcr7r3.jpeg', 4500),
+  (24, 9000, 2011, 'Eclipse Spyder', 'MT', 'Mitsubishi', 92000, 'https://i.imgur.com/x2nilZ1.jpeg', 12000),
+  (25, 85000, 2022, 'Air Grand Touring', 'AT', 'Lucid', 6000, 'https://i.imgur.com/cgxRO3x.jpeg', 91000), 
+  (26, 29500, 2023, 'Model Y', 'N/A', 'Tesla', 7000, 'https://i.imgur.com/c48QWbi.jpeg', 12000),
+  (27, 14500, 1999, 'M3', 'MT', 'BMW', 95000, 'https://i.imgur.com/JXvOao0.jpeg', 19500),
+  (28, 6500, 2001, 'TT Roadster', 'MT', 'Audi', 93000, 'https://i.imgur.com/GRZvXrg.jpeg', 7500),
+
 
 SET IDENTITY_INSERT [User] ON
 INSERT INTO [User]
