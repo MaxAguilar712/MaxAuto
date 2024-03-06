@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Card, CardImg, CardBody, CardFooter, Button } from "reactstrap";
 import { Links, useNavigate } from "react-router-dom";
+import { updateMoney } from "../../Managers/UserManager";
 // import './Car.css';
+
+
 
 export const GarageCar = ({ garageCar }) => {
 
 	const [inputPrice, setInputPrice] = useState("");
+
 
 	const GCWorth = garageCar.worth;
 
@@ -14,6 +18,7 @@ export const GarageCar = ({ garageCar }) => {
 	  }
 	const navigate = useNavigate();
 	// const goToPartPage = () => {
+	const user = JSON.parse(localStorage.getItem("user"))
 
 		
 	// 	 navigate('/part-market');
@@ -94,8 +99,19 @@ export const GarageCar = ({ garageCar }) => {
 					console.log(inputPrice);
 
 					if (inputPrice <= GCWorth) {
-						console.log("CAR SOLD")
-					} else { console.log("NOT SOLD") }
+						console.log(user.money)
+						user.money = user.money + parseInt(inputPrice)
+						
+						console.log("CAR SOLD");
+						console.log(user.money);
+						updateMoney(user);
+						localStorage.setItem("user", JSON.stringify(user));
+						
+
+						alert(`you could have got $ ${GCWorth - inputPrice} more`)
+						window.location.reload();
+					} else { console.log("NOT SOLD") 
+				alert('Asking price is too high, try a lower price...')}
 				}}
 			>
 				Sell
