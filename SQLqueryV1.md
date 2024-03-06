@@ -97,7 +97,7 @@ VALUES
   (12, 1200, 2000, 'Focus SE', 'AT', 'Ford', 222000, 'https://i.imgur.com/i1s4pXZ.jpeg', 2000);
   (13, 1100, 2000, 'Taurus SE', 'AT', 'Ford', 251000, 'https://i.imgur.com/Aaa7TFs.jpeg', 2000);
   (14, 70000, 1991, 'NSX', 'MT', 'Acura', 65000, 'https://i.imgur.com/LwMTxpN.jpg', 90000),
-  (15, 7500, 1990, 'Miata NA', 'MT', 'Mazda', 77000, 'https://i.imgur.com/LwMTxpN.jpg', 10000),
+  (15, 7500, 1990, 'Miata NA', 'MT', 'Mazda', 77000, 'https://i.imgur.com/oPGGLpS.jpg', 10000),
   (16, 15500, 2006, 'G35 Coupe', 'AT', 'Infiniti', 102000, 'https://i.imgur.com/2OG2gUX.jpg', 11000),
   (17, 6500, 2008, 'Altima S', 'CVT', 'Nissan', 79000, 'https://i.imgur.com/cD7C2L6.jpg', 8500),
   (18, 250000, 2005, 'SLR', 'AT', 'Mercedes-Benz', 8000, 'https://i.imgur.com/J0kEVAF.jpg', 400000),
