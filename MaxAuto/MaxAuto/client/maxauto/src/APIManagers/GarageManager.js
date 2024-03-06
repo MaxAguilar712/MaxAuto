@@ -6,7 +6,7 @@ const baseUrl = `${apiUrl}/api/CarGarage`;
 
 export const getAllGarageCars = () => {
   return fetch(baseUrl) 
-    .then((res) => res.json())
+   .then((res) => res.json())
 };
 
 
@@ -19,3 +19,8 @@ export const buyGarageCar = (garageCar) => {
       body: JSON.stringify(garageCar),
     })
   };  
+
+export const deleteGarageCar = (id) => {
+  return fetch(`${apiUrl}/api/CarGarage/${id}`, { method: "DELETE" })
+      .then((res) => res.json())
+};
