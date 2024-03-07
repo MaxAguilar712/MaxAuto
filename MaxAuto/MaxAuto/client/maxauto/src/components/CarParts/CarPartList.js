@@ -26,15 +26,13 @@ import { CarPart } from "./CarPart.js";
 
 		
 
-	  <div className='rows' > <div> Current Car Parts: {}  </div>
-		<div className="row">
-		  <div className="row" >
+	 
+		  <ul>
 			
 			{carParts.map((carPart) => (
 			  <CarPart key={carPart.id} carPart={carPart}/>
 			))}
-		  </div>
-		</div>
-	  </div>
+		  </ul>
+
 	);
   };
