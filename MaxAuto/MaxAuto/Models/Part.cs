@@ -15,6 +15,8 @@ namespace MaxAuto.Models
         [Required]
         public int Price { get; set; }
 
+        public int CarId {  get; set; }
+
 
     }
 }

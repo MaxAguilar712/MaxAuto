@@ -11,6 +11,12 @@ export const getAllCarParts = () => {
 };
 
 
+export const getPurchasedCarParts = () => {
+  return fetch(`${apiUrl}/api/CarPart/GetParts`) 
+   .then((res) => res.json())
+};
+
+
 export const buyCarPart = (carPart) => {
     return fetch(`${apiUrl}/api/CarPart`, {
       method: "POST",

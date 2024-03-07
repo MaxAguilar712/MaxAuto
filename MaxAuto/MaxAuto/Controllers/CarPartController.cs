@@ -23,7 +23,14 @@ namespace MaxAuto.Controllers
                 return Ok(_carPartRepository.GetAll());
             }
 
-            [HttpGet("{id}")]
+
+        [HttpGet("GetParts")]
+        public IActionResult GetPart()
+        {
+            return Ok(_carPartRepository.GetParts());
+        }
+
+        [HttpGet("{id}")]
             public IActionResult Get(int id)
             {
                 var carpart = _carPartRepository.GetById(id);

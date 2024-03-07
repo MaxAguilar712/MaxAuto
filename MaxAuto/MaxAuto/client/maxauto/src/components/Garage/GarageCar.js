@@ -122,12 +122,14 @@ export const GarageCar = ({ garageCar }) => {
 			>
 				Sell
 			</Button>
+
+			 
 				</p><h2>Upgrades:</h2>
 				
 				<div class="list">
   
   <ul> 
-	 {CarPartList()} 
+	 {CarPartList(garageCar.id)} 
 	</ul>
    
  

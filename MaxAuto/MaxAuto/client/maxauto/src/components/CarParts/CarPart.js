@@ -7,9 +7,7 @@ export const CarPart = ({ carPart }) => {
   return (
 
           <li> <span>
-           Id:{carPart.id} 
-            PartId:{carPart.garageCarPartId}
-           CarId:{carPart.garageCarId}
+           {carPart.name}
          </span> </li>
 
   );
