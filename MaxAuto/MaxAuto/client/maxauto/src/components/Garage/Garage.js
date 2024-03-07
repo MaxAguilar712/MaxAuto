@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GarageCar } from "./GarageCar.js";
 import { Container } from "reactstrap";
 import { getAllGarageCars } from "../../APIManagers/GarageManager.js";
-// import './CarList.css';
+
 
 
  export const GarageCarList = () => {

@@ -16,6 +16,7 @@ namespace MaxAuto
             builder.Services.AddTransient<ICarRepository, CarRepository>();
             builder.Services.AddTransient<IPartRepository, PartRepository>();
             builder.Services.AddTransient<ICarGarageRepository, CarGarageRepository>();
+            builder.Services.AddTransient<ICarPartRepository, CarPartRepository>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

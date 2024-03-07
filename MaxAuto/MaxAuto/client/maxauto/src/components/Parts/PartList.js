@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Part } from "./Part.js";
 import { Container } from "reactstrap";
 import { getAllParts } from "../../APIManagers/PartManager.js";
+import { GarageCar } from "../Garage/GarageCar.js";
 // import './CarList.css';
 
 
@@ -21,9 +22,13 @@ import { getAllParts } from "../../APIManagers/PartManager.js";
 	  getParts();
 	}, []); 
 	return (
-	  <div className='rows' >
+
+		
+
+	  <div className='rows' > <div> Current Parts: {}  </div>
 		<div className="row">
 		  <div className="row" >
+			
 			{parts.map((part) => (
 			  <Part key={part.id} part={part}/>
 			))}

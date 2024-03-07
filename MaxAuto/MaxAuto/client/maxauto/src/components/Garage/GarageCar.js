@@ -3,7 +3,8 @@ import { Card, CardImg, CardBody, CardFooter, Button } from "reactstrap";
 import { Links, useNavigate } from "react-router-dom";
 import { updateMoney } from "../../Managers/UserManager";
 import { deleteGarageCar } from "../../APIManagers/GarageManager";
-// import './Car.css';
+import './garage.css';
+import { CarPartList } from "../CarParts/CarPartList";
 
 
 
@@ -50,12 +51,13 @@ export const GarageCar = ({ garageCar }) => {
 		<p className="text-left px-2"> Mileage: {garageCar?.mileage} </p>
 		<p className="text-left px-2"> Spent: ${garageCar.price}.00  </p>
       </div>
+	  <div> Parts: {CarPartList(garageCar.id)} </div>
       
 
         {/* <p>{car.caption}</p> */}
         {/* <p>Comments:</p>
         <div>
-            {post.comments?.map((singleComment) => (
+		{post.comments?.map((singleComment) => (
                 <>
                 <p>{singleComment.message}</p>
                 <p>{singleComment?.userProfile?.name}</p>
@@ -120,7 +122,7 @@ export const GarageCar = ({ garageCar }) => {
 				Sell
 			</Button>
 				</p>
-
+					
 			</CardFooter>
     </Card>
   );
