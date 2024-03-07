@@ -12,6 +12,8 @@ GO
 DROP TABLE IF EXISTS [Car];
 DROP TABLE IF EXISTS [User];
 DROP TABLE IF EXISTS [Part];
+DROP TABLE IF EXISTS [CarPart;
+DROP TABLE IF EXISTS [CarGarage]
 
 CREATE TABLE [UserType] (
   [Id] integer PRIMARY KEY IDENTITY,
@@ -76,7 +78,7 @@ SET IDENTITY_INSERT [CarGarage] ON
 INSERT INTO [CarGarage]
   ([Id], [Price], [Year], [Name], [Transmission], [Manufacturer], [Mileage], [ImageUrl], [Worth], [UserId])
 VALUES 
-  (42069, 999999, 2023, 'TOMAHAWK X SRT', 'MT', 'Dodge', 150, 'https://assets.newatlas.com/dims4/default/098f9bb/2147483647/strip/true/crop/1620x1080+150+0/resize/1200x800!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2Farchive%2FCN015_042SRco1r7mk5pp8rn14gfprhdhbdlp.jpg', 999999, 1),
+  (101, 999999, 2023, 'TOMAHAWK X SRT', 'MT', 'Dodge', 150, 'https://assets.newatlas.com/dims4/default/098f9bb/2147483647/strip/true/crop/1620x1080+150+0/resize/1200x800!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2Farchive%2FCN015_042SRco1r7mk5pp8rn14gfprhdhbdlp.jpg', 999999, 1),
 
 
 SET IDENTITY_INSERT [Car] ON
@@ -120,16 +122,29 @@ VALUES
   (1, 'Admin', 'Admin@email.com', 1, 999999);
 
 
-SET IDENTITY_INSERT [Part] OFF
+SET IDENTITY_INSERT [Part] ON
 INSERT INTO [Part]
   ([Id], [Name], [Category], [Price])
 VALUES
-  (1, 'Ceramic Brakes', 'Brakes', 80),
-  (2, 'Organic Brakes', 'Brakes', 40),
-  (3, 'Semi-Metallic Brakes', 'Brakes', 60),
-  (4, 'Serpentine Belt', 'Belts', 25),
-  (5, 'Fan Belt', 'Belts', 15),
-  (6, 'Timing Belt', 'Belts', 25);
+  (33, 'Sports Computer', 'ECU', 600),
+  (34, 'Fully Tuned Computer', 'ECU', 1100), 
+  (35, 'Turbo', 'Engine', 1000),
+  (36, 'Twin Turbo', 'Engine', 1700),
+  (37, 'Supercharger', 'Engine', 2000),
+  (38, 'High Performance Air Filter', 'Engine', 300), 
+  (39, 'Upgraded Cooling', 'Engine', 700), 
+  (40, 'High Performance Exhaust Manifold', 'Exhaust', 800), 
+  (41, 'Straight Pipe', 'Exhaust', 500),
+  (42, 'High Performance Exhaust', 'Exhaust', 800),
+  (43, 'Catalytic Converter Delete', 'Exhaust', 300), 
+  (44, 'High Performance Suspension', 'Suspension', 1100),
+  (45, 'Adjustable High Performance Coilovers', 'Suspension', 1500),
+  (46, 'High Performance Tires', 'Suspension', 700),
+  (47, 'Limited-Slip Differential', 'Differential', 900),
+  (48, 'High Performance Camshaft', 'Engine', 600),
+  (49, 'High Performance Crankshaft', 'Engine', 800),
+  (50, 'High Performance Clutch', 'Transmission', 700),
+  (51, 'High Performance Flywheel', 'Transmission', 600),
 
 
 
