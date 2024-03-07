@@ -40,7 +40,8 @@ export default function ApplicationViews({ isLoggedIn }) {
 			<Route path='/' element={<Hello />} />
 			<Route path='/car-market' element={<CarList />} />
 			{/* <Route path='/part-market'  /> */}
-			<Route path='/part-market/:id' element={<PartList />}/>
+			<Route path='/part-market/:garageCarId' element={<PartList />}/>
+			{/* <Route path="/post/:id" element={<PostDetails />} /> */}
 			<Route path='/my-garage' element={<GarageCarList/>} />
 			{/* <Route path='/part-market' element={<PartMarket />} />
 			<Route path='/my-garage' element={<MyGarage />} /> */}

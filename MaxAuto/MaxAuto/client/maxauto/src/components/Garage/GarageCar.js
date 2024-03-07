@@ -5,6 +5,7 @@ import { updateMoney } from "../../Managers/UserManager";
 import { deleteGarageCar } from "../../APIManagers/GarageManager";
 import './garage.css';
 import { CarPartList } from "../CarParts/CarPartList";
+import { getAllCarParts } from "../../APIManagers/CarPartManager";
 
 
 
@@ -51,7 +52,7 @@ export const GarageCar = ({ garageCar }) => {
 		<p className="text-left px-2"> Mileage: {garageCar?.mileage} </p>
 		<p className="text-left px-2"> Spent: ${garageCar.price}.00  </p>
       </div>
-	  <div> Parts: {CarPartList(garageCar.id)} </div>
+	  {/* <div> Parts: {CarPartList(garageCar.id)} </div> */}
       
 
         {/* <p>{car.caption}</p> */}
@@ -121,8 +122,18 @@ export const GarageCar = ({ garageCar }) => {
 			>
 				Sell
 			</Button>
-				</p>
-					
+
+			 
+				</p><h2>Upgrades:</h2>
+				
+				<div class="list">
+  
+  <ul> 
+	 {CarPartList(garageCar.id)} 
+	</ul>
+   
+ 
+</div>
 			</CardFooter>
     </Card>
   );

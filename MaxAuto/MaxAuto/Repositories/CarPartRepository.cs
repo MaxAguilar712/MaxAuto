@@ -45,6 +45,48 @@ namespace MaxAuto.Repositories
 
 
 
+        public List<Part> GetParts()
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                SELECT cp.Id, cp.GarageCarPartId, cp.GarageCarId, p.name, p.Category, p.Price
+                       
+                  FROM CarPart cp 
+                    JOIN Part p
+                    ON cp.GarageCarPartId = p.Id
+                       
+              ORDER BY cp.Id"
+                    ;
+
+                    var reader = cmd.ExecuteReader();
+
+                    var parts = new List<Part>();
+                    while (reader.Read())
+                    {
+                        parts.Add(new Part()
+                        {
+                            Id = DbUtils.GetInt(reader, "GarageCarPartId"),
+                            Name = DbUtils.GetString(reader, "name"),
+                            Category = DbUtils.GetString(reader, "Category"),
+                            Price = DbUtils.GetInt(reader, "Price"),
+                            CarId = DbUtils.GetInt(reader, "GarageCarId"),
+
+                        });
+                    }
+
+                    reader.Close();
+
+                    return parts;
+                }
+            }
+        }
+
+
+
         public CarPart GetById(int id)
         {
             using (var conn = Connection)

@@ -6,6 +6,8 @@ namespace MaxAuto.Repositories
     {
         void Add(CarPart carpart);
         List<CarPart> GetAll();
+
+        List<Part> GetParts();
         CarPart GetById(int id);
     }
 }

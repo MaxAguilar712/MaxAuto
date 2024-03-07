@@ -1,4 +1,6 @@
 import React from "react";
+import './Hello.css'
+
 
 export default function Hello() {
   return (
@@ -11,8 +13,20 @@ export default function Hello() {
       top: "50%",
       marginTop: "-0.5rem",
       textAlign: "center",
-    }}>Welcome to Max Auto
-    <div ><img style={{width: '30%', height: '30%',}} src="https://i.imgur.com/Dk5OJ84.png"></img></div>
+    }}>
+   
+    <div class="wrapper">
+  <div class="container"><img style={{width: '30%', height: '30%',}} src="https://i.imgur.com/Dk5OJ84.png"></img>
+    <h1>Buy Upgrade Sell</h1>
+  </div>
+</div>
+
+
+
+
     </span>
+
+
+
   );
 }
