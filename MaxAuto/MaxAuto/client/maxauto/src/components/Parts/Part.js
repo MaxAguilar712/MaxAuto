@@ -65,19 +65,19 @@ export const Part = ({ part }) => {
 
 
   return (
-    <Card className='h-10' style={{margin: "2em", width:" 35%", height:"auto", background: "#727272"}}>
-      <p className="text-center" style={{paddingTop: "2vh", fontSize: "2rem", color: "white"}}>
-        <p className="text-left px-2">{part?.name}</p>
-		<p className="text-left px-2">Category: {part?.category}</p>
+    <Card className='parth' style={{margin: "1em", width:" 20%", height:"auto", background: "#727272"}}>
+      <p className="parttext-center" style={{paddingTop: "1vh", fontSize: "1.5rem", color: "white"}}>
+        <p className="parttext-left px-2">{part?.name}</p>
+		<p className="parttext-left px-2">Category: {part?.category}</p>
 		{/* <p className="text-left px-2"> Mileage: {car?.mileage} </p> */}
       </p>
       {/* <CardImg className="Shadow" top src={car.imageUrl} alt={car.name}  /> */}
       <CardBody >
-        <p>debug PartId: {part.id} debug GarageCarId: {garageCarId}  </p>
-         <p>
+      
+        
           <p style={{color:"white"}}>
-          <strong> ${part.price}.00</strong>
-          </p>
+          <strong> ${part.price}.00 </strong>
+          
           <Button onClick={savePart
 
               // GRAB GARAGECAR ID, GRAB PART ID, ADD THEM TO CARPART, SAVE WITH THE BUYCARPART FUNCTION
