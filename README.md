@@ -9,8 +9,11 @@
 
 ![macses copy](https://github.com/MaxAguilar712/MaxAuto/assets/143422478/e640a784-e08f-4e27-bb65-81e976a6c810)
 
-<img width="1267" alt="ss3" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/ae024aa5-b174-4b7c-83b4-8f40e79de7ff">
-
-<img width="1280" alt="ss4" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/de935f83-eba2-4d9c-a67e-aac5e1941e6f">
-
-<img width="1020" alt="ss2" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/70b32317-9d57-494c-bc46-936584e99050">
+<img width="1266" alt="maxauto1" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/30e349ad-eaf1-43dc-9ef5-40442fff94fe">
+<img width="1280" alt="maxauto8" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/87fed8d7-7d66-49ea-96d5-debbb70a4190">
+<img width="1269" alt="maxauto2" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/8a407b80-b046-4bf1-930e-d67be7044b2a">
+<img width="1268" alt="maxauto3" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/d363fbe4-df25-4a8c-9ee8-ae55b87359a5">
+<img width="1267" alt="maxauto4" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/ca1896ee-55bb-4e9a-ae56-b015adc68d67">
+<img width="1270" alt="maxauto5" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/6a45a94a-0b57-4533-86dc-3c9db21b80d6">
+<img width="1268" alt="maxauto6" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/75c80b97-e991-431e-9939-5e2e1cab286d">
+<img width="1280" alt="maxauto7" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/215570df-0e8b-45c6-9fa2-3eec0279e3f6">
