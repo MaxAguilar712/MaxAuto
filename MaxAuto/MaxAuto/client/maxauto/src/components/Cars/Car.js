@@ -29,7 +29,8 @@ export const Car = ({ car }) => {
 		Manufacturer: "",
 	    Mileage: 0,
 		ImageUrl: "",
-		Worth: 0
+		Worth: 0,
+		NickName: ""
 	  })
 
 
@@ -52,6 +53,7 @@ export const Car = ({ car }) => {
 		garageCar.Mileage = car.mileage;
 		garageCar.ImageUrl = car.imageUrl;
 		garageCar.Worth = car.worth;
+		garageCar.NickName = "";
 
 		// console.log(garageCar)
 		buyGarageCar(garageCar);
