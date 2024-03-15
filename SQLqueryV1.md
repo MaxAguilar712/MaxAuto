@@ -71,6 +71,7 @@ CREATE TABLE [CarGarage] (
   [ImageUrl] nvarchar(255),
   [Worth] integer NOT NULL,
   [UserId] integer NOT NULL,
+  [NickName] nvarchar(255),
 )
 GO
 
