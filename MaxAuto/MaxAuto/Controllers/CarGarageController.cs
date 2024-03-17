@@ -60,6 +60,35 @@ namespace MaxAuto.Controllers
                 return StatusCode(500, "An error occurred while deleting the post.");
             }
         }
+
+
+        [HttpGet("GetById/{Id}")]
+        public IActionResult GetById(int Id)
+        {
+            var garagecar = _carGarageRepository.GetById(Id);
+
+            if (garagecar == null)
+            {
+                return NotFound();
+            }
+            return Ok(garagecar);
+        }
+
+
+
+        [HttpPut("UpdateNickName/{id}")]
+        public IActionResult Put(int id, CarGarage garagecar)
+        {
+            if (id != garagecar.Id)
+            {
+                return BadRequest();
+            }
+
+            _carGarageRepository.UpdateNickName(garagecar);
+            return NoContent();
+        }
+
+
         //public IActionResult Index()
         //{
         //    return View();

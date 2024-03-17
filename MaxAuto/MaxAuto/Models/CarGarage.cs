@@ -31,5 +31,7 @@ namespace MaxAuto.Models
         public int Worth { get; set; }
 
         public int UserId { get; set; }
+
+        public string NickName {  get; set; } 
     }
 }

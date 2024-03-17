@@ -9,6 +9,7 @@ import Hello from "./Hello";
 import { CarList} from "./Cars/CarList";
 import { PartList} from "./Parts/PartList";
 import { GarageCarList } from "./Garage/Garage";
+import { EditGarageCar } from "./Garage/garageCarEdit";
 // import { TagList } from "./tags/TagList.js";
 // import { AddTag } from "./tags/AddTag.js";
 // import { DeleteTag } from "./tags/DeleteTag.js";
@@ -43,6 +44,7 @@ export default function ApplicationViews({ isLoggedIn }) {
 			<Route path='/part-market/:garageCarId' element={<PartList />}/>
 			{/* <Route path="/post/:id" element={<PostDetails />} /> */}
 			<Route path='/my-garage' element={<GarageCarList/>} />
+			<Route path='/my-garage/EditNickName/:id' element={<EditGarageCar/>} />
 			{/* <Route path='/part-market' element={<PartMarket />} />
 			<Route path='/my-garage' element={<MyGarage />} /> */}
 			{/* <Route path='/Tags/Edit/:id' element={<EditTag />} /> */}

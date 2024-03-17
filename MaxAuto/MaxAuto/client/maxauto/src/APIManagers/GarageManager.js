@@ -24,3 +24,19 @@ export const deleteGarageCar = (id) => {
   return fetch(`${apiUrl}/api/CarGarage/${id}`, { method: "DELETE" })
       .then((res) => res.json())
 };
+
+export const getGarageCarById = (id) => {
+  return fetch(`${apiUrl}/api/CarGarage/GetById/${id}`) 
+   .then((res) => res.json())
+};
+
+
+export const updateGarageCar = (garageCar) => {
+	return fetch(`${apiUrl}/api/CarGarage/UpdateNickName/${garageCar.id}`, {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(garageCar),
+	});
+};

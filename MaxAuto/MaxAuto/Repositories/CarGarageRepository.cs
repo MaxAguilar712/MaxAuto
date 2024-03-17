@@ -2,6 +2,7 @@
 using MaxAuto.Models;
 using MaxAuto.Utils;
 using Microsoft.Data.SqlClient;
+using System.Reflection.PortableExecutable;
 
 namespace MaxAuto.Repositories
 {
@@ -39,6 +40,7 @@ namespace MaxAuto.Repositories
                             ImageUrl = DbUtils.GetString(reader, "ImageUrl"),
                             Worth = DbUtils.GetInt(reader, "Worth"),
                             UserId = DbUtils.GetInt(reader, "UserId"),
+                            NickName = DbUtils.GetString(reader, "NickName"),
 
                         });
                     }
@@ -56,9 +58,71 @@ namespace MaxAuto.Repositories
 
 
 
+        public CarGarage GetById(int Id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT cg.Id, cg.Price, cg.Year, cg.Name, cg.Transmission, cg.Manufacturer, cg.Mileage, cg.ImageUrl, cg.Worth, cg.UserId, cg.NickName
+                          FROM [CarGarage] cg
+                               
+                         WHERE cg.Id = @Id";
+
+                    DbUtils.AddParameter(cmd, "@Id", Id);
+
+                    CarGarage garagecar = null;
+
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+
+                        garagecar = new CarGarage()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            Price = DbUtils.GetInt(reader, "Price"),
+                            Year = DbUtils.GetInt(reader, "Year"),
+                            Name = DbUtils.GetString(reader, "Name"),
+                            Transmission = DbUtils.GetString(reader, "Transmission"),
+                            Manufacturer = DbUtils.GetString(reader, "Manufacturer"),
+                            Mileage = DbUtils.GetInt(reader, "Mileage"),
+                            ImageUrl = DbUtils.GetString(reader, "ImageUrl"),
+                            Worth = DbUtils.GetInt(reader, "Worth"),
+                            UserId = DbUtils.GetInt(reader, "UserId"),
+                            NickName = DbUtils.GetString(reader, "NickName"),
+                        };
+
+                    reader.Close();
+
+                    return garagecar;
+                }
+            }
+        }
 
 
 
+
+        public void UpdateNickName(CarGarage garagecar)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE [CarGarage]
+                           SET NickName = @NickName
+                           WHERE Id = @Id";
+
+                    DbUtils.AddParameter(cmd, "@NickName", garagecar.NickName);
+                    DbUtils.AddParameter(cmd, "@Id", garagecar.Id);
+
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
+        }
 
 
 
@@ -90,6 +154,7 @@ namespace MaxAuto.Repositories
                             ImageUrl = DbUtils.GetString(reader, "ImageUrl"),
                             Worth = DbUtils.GetInt(reader, "Worth"),
                             UserId = DbUtils.GetInt(reader, "UserId"),
+                            NickName = DbUtils.GetString(reader, "NickName"),
                         });
                     }
                     reader.Close();
@@ -107,10 +172,10 @@ namespace MaxAuto.Repositories
                 {
                     cmd.CommandText = @"
                         INSERT INTO CarGarage (
-                           Price, Year, Name, Transmission, Manufacturer, Mileage, ImageUrl, Worth, UserId)
+                           Price, Year, Name, Transmission, Manufacturer, Mileage, ImageUrl, Worth, UserId, NickName)
                         OUTPUT INSERTED.ID
                         VALUES (
-                             @Price, @Year, @Name, @Transmission, @Manufacturer, @Mileage, @ImageUrl, @Worth, @UserId)";
+                             @Price, @Year, @Name, @Transmission, @Manufacturer, @Mileage, @ImageUrl, @Worth, @UserId, @NickName)";
 ;
                     cmd.Parameters.AddWithValue("@Price", cargarage.Price);
                     cmd.Parameters.AddWithValue("@Year", cargarage.Year);
@@ -121,6 +186,7 @@ namespace MaxAuto.Repositories
                     cmd.Parameters.AddWithValue("@ImageUrl", cargarage.ImageUrl);
                     cmd.Parameters.AddWithValue("@Worth", cargarage.Worth);
                     cmd.Parameters.AddWithValue("@UserId", cargarage.UserId);
+                    cmd.Parameters.AddWithValue("@NickName", cargarage.NickName);
 
                     cargarage.Id = (int)cmd.ExecuteScalar();
                 }
