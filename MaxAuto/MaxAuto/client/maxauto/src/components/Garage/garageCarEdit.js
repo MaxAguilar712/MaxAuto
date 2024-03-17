@@ -27,7 +27,7 @@ export const EditGarageCar = () => {
 	return (
 		<Container>
 			<InputGroup>
-				<InputGroupText>NickName</InputGroupText>
+				<InputGroupText></InputGroupText>
 				<Input
 					placeholder='NickName'
 					value={garageCar.nickName}
