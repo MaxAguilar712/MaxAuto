@@ -25,8 +25,8 @@ export const deleteGarageCar = (id) => {
       .then((res) => res.json())
 };
 
-export const getGarageCarById = (garageCar) => {
-  return fetch(`${apiUrl}/api/CarGarage/GetById/${garageCar.id}`) 
+export const getGarageCarById = (id) => {
+  return fetch(`${apiUrl}/api/CarGarage/GetById/${id}`) 
    .then((res) => res.json())
 };
 

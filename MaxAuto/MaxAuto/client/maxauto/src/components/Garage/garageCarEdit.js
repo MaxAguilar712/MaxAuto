@@ -7,12 +7,12 @@ import {
 	InputGroup,
 	InputGroupText,
 } from "reactstrap";
-import { getGarageCarById } from "../../APIManagers/GarageManager";
+import { getGarageCarById, updateGarageCar } from "../../APIManagers/GarageManager";
 
 export const EditGarageCar = () => {
 	const { id } = useParams();
 	const [garageCar, setGarageCar] = useState({
-		id: id,
+		id: id, 
 		nickName: "",
 	});
 	const navigate = useNavigate();

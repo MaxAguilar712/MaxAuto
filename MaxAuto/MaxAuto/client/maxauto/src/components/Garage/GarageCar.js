@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Card, CardImg, CardBody, CardFooter, Button } from "reactstrap";
 import { Links, useNavigate } from "react-router-dom";
 import { updateMoney } from "../../Managers/UserManager";
-import { deleteGarageCar } from "../../APIManagers/GarageManager";
+import { deleteGarageCar, updateGarageCar } from "../../APIManagers/GarageManager";
 import './garage.css';
 import { CarPartList } from "../CarParts/CarPartList";
 import { getAllCarParts } from "../../APIManagers/CarPartManager";
+import { EditGarageCar } from "./garageCarEdit";
 
 
 
@@ -14,12 +15,24 @@ export const GarageCar = ({ garageCar }) => {
 	const [inputPrice, setInputPrice] = useState("");
 
 
+
+
+
 	const GCWorth = garageCar.worth;
 
 	const handleChange = (e) => {
 		setInputPrice(e.target.value);
 	  }
 	const navigate = useNavigate();
+
+	const handleNavigate = (e) => {
+		e.preventDefault();
+		const [, garageCarId] = e.target.id.split("--");
+		if (e.target.id.startsWith("edit-garageCar")) {
+			navigate(`/my-garage/EditNickName/${garageCarId}`);
+		}
+	};
+
 	// const goToPartPage = () => {
 	const user = JSON.parse(localStorage.getItem("user"))
 
@@ -124,6 +137,10 @@ export const GarageCar = ({ garageCar }) => {
 				Sell
 			</Button>
 
+
+			<Button id={`edit-garageCar--${garageCar.id}`} onClick={(e) => handleNavigate(e)}>
+					Edit </Button>
+
 			 
 				</p><h2>Upgrades:</h2>
 				
@@ -131,9 +148,18 @@ export const GarageCar = ({ garageCar }) => {
   
   <ul> 
 	 {CarPartList(garageCar.id)} 
+	  {/* {EditGarageCar(garageCar.id)} */}
 	</ul>
    
  
+
+
+
+</div>
+
+<div>
+
+
 </div>
 			</CardFooter>
     </Card>
