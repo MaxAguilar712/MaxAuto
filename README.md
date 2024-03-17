@@ -8,7 +8,7 @@
 ![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white)
 
 
-![macses copy](https://github.com/MaxAguilar712/MaxAuto/assets/143422478/e640a784-e08f-4e27-bb65-81e976a6c810)
+
 
 <img width="1266" alt="maxauto1" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/30e349ad-eaf1-43dc-9ef5-40442fff94fe">
 <img width="1280" alt="maxauto8" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/87fed8d7-7d66-49ea-96d5-debbb70a4190">
@@ -18,3 +18,5 @@
 <img width="1270" alt="maxauto5" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/6a45a94a-0b57-4533-86dc-3c9db21b80d6">
 <img width="1268" alt="maxauto6" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/75c80b97-e991-431e-9939-5e2e1cab286d">
 <img width="1280" alt="maxauto7" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/215570df-0e8b-45c6-9fa2-3eec0279e3f6">
+<img width="1280" alt="maxauto9" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/f1d6d558-5b8c-4dea-ab8e-ea18a0bc3e9c">
+<img width="1276" alt="maxauto10" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/13e85d9f-9e95-437c-b0c9-44169800cb50">
