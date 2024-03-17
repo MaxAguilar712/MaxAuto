@@ -44,10 +44,10 @@ export const GarageCar = ({ garageCar }) => {
 
   return (
     <Card className='h-10' style={{margin: "1.5em", width:" 375px", height:"auto", background: "#727272"}}> 
-	     <CardBody >      </CardBody>
+	     {/* <CardBody >      </CardBody> */}
       <CardImg className="Shadow" style={{margin: "2vh"}} top src={garageCar.imageUrl} alt={garageCar.name}  />
 	  <div className="text-center" style={{paddingTop: "1vh", fontSize: "3vh ", color: "white"}}>
-	    <p className="text-left px-2" contenteditable="true"> Custom Name: None </p>
+	    <p className="text-left px-2" contenteditable="true"> Custom Name: {garageCar.nickName}</p>
         <p className="text-left px-2">{garageCar?.year} {garageCar?.manufacturer} {garageCar?.name}</p>
 		<p className="text-left px-2">Transmission: {garageCar?.transmission}</p>
 		<p className="text-left px-2"> Mileage: {garageCar?.mileage} </p>

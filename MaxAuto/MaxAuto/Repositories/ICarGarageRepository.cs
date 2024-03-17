@@ -7,6 +7,10 @@ namespace MaxAuto.Repositories
         void Add(CarGarage cargarage);
         void Delete(int garageCarId);
         List<CarGarage> GetAll();
+        CarGarage GetById(int Id);
         List<CarGarage> GetByUserId(int id);
+
+        void UpdateNickName(CarGarage garagecar);
+
     }
 }

@@ -58,9 +58,71 @@ namespace MaxAuto.Repositories
 
 
 
+        public CarGarage GetById(int Id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT cg.Id, cg.Price, cg.Year, cg.Name, cg.Transmission, cg.Manufacturer, cg.Mileage, cg.ImageUrl, cg.Worth, cg.UserId, cg.NickName
+                          FROM [CarGarage] cg
+                               
+                         WHERE cg.Id = @Id";
+
+                    DbUtils.AddParameter(cmd, "@Id", Id);
+
+                    CarGarage garagecar = null;
+
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+
+                        garagecar = new CarGarage()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            Price = DbUtils.GetInt(reader, "Price"),
+                            Year = DbUtils.GetInt(reader, "Year"),
+                            Name = DbUtils.GetString(reader, "Name"),
+                            Transmission = DbUtils.GetString(reader, "Transmission"),
+                            Manufacturer = DbUtils.GetString(reader, "Manufacturer"),
+                            Mileage = DbUtils.GetInt(reader, "Mileage"),
+                            ImageUrl = DbUtils.GetString(reader, "ImageUrl"),
+                            Worth = DbUtils.GetInt(reader, "Worth"),
+                            UserId = DbUtils.GetInt(reader, "UserId"),
+                            NickName = DbUtils.GetString(reader, "NickName"),
+                        };
+
+                    reader.Close();
+
+                    return garagecar;
+                }
+            }
+        }
 
 
 
+
+        public void UpdateNickName(CarGarage garagecar)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE [CarGarage]
+                           SET NickName = @NickName
+                           WHERE Id = @Id";
+
+                    DbUtils.AddParameter(cmd, "@NickName", garagecar.NickName);
+                    DbUtils.AddParameter(cmd, "@Id", garagecar.Id);
+
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
+        }
 
 
 
