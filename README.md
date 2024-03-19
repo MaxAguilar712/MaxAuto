@@ -9,6 +9,7 @@
 
 
 
+
 <img width="1266" alt="maxauto1" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/30e349ad-eaf1-43dc-9ef5-40442fff94fe">
 <img width="1280" alt="maxauto8" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/87fed8d7-7d66-49ea-96d5-debbb70a4190">
 <img width="1269" alt="maxauto2" src="https://github.com/MaxAguilar712/MaxAuto/assets/143422478/8a407b80-b046-4bf1-930e-d67be7044b2a">
